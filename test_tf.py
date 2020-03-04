@@ -26,3 +26,7 @@ model.compile(optimizer='adam', loss=loss_fn, metrics=['accuracy'])
 model.fit(X_train, y_train, epochs=5)
 
 model.evaluate(X_test, y_test, verbose=2)
+
+probability_model = tf.keras.Sequential([model, tf.keras.layers.Softmax()])
+
+print(probability_model([X_test[:5]]))
